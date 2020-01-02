@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "[URL]http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd[/URL]">
+<html xmlns="[URL]http://www.w3.org/1999/xhtml[/URL]">
+<style>
+ 
+ p1 {
+  font-size: 90px;
+     }
+ button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4c57af;
+  border: 2px solid yellow;
+  border-radius: 15px;
+  box-shadow: 0 7px #999;
+}
+button:hover {background-color: red}
+button:active {
+  background-color: #4c57af;
+  box-shadow: 0 5px #666;
+  transform: translate3d(8px,8px,8px);
+}
+ </style>
+<head>
+<title>Downtime Cost</title>
+
+<script type="text/javascript">
+var counter = 0
+var timer;
+function countUP () {
+ counter = counter + 140;//increment the counter by 140
+ //display the new value in the div
+ document.getElementById("timer_container").innerHTML = "-$ "+ counter;
+ document.getElementById("timer_container").style.fontSize = "90px";
+ document.getElementById("timer_container").style.color = "red";
+   }
+</script>
+
+</head>
+ <body> 
+      <header class="w3-display-container w3-content w3-hide-small" style="max-width:1400px">
+  <img class="w3-image" src="./Online_Travel_Site1_files/bbindexlogo.png" alt="Best Buy" width="80%" height="80%">
+ <div class="w3-display-middle" style="width:65%"> 
+   <br>
+      <div id="timer_container"><p1>$ 0</p1></div>
+   <br>
+<button onclick='clearInterval(timer);'>Cart Service Up</button>
+<button onclick='timer=setInterval("countUP()", 1000 );'>Cart Service Down</button>
+</div>
+</body>
+</html>

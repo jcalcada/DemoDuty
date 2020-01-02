@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "[URL]http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd[/URL]">
+<html xmlns="[URL]http://www.w3.org/1999/xhtml[/URL]">
+<style>
+ p1 {
+  font-size: 90px;
+
+}
+ button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+button:hover {background-color: #3e8e41}
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+ </style>
+<head>
+<title>Downtime Cost</title>
+<script type="text/javascript">
+var counter = 0
+var timer;
+function countUP () {
+ counter = counter + 140;//increment the counter by 140
+ //display the new value in the div
+ document.getElementById("timer_container").innerHTML = counter;
+ document.getElementById("timer_container").style.fontSize = "90px";
+ document.getElementById("timer_container").style.color = "red";
+   }
+</script>
+</head>
+ <body onload='timer=setInterval("countUP()", 500 );'>
+  <br>
+    <div id="timer_container"><p1>0</p1></div>
+ <br>
+  <button onclick='clearInterval(timer);'>Cart Service Up</button>
+<button onclick='timer=setInterval("countUP()", 500 );'>Cart Service Down</button>
+</div>
+</body>
+</html>

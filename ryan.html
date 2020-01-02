@@ -1,0 +1,133 @@
+.<!DOCTYPE html>
+<!-- saved from url=(0062)https://www.w3schools.com/w3css/tryw3css_templates_travel2.htm -->
+<html class="gr__w3schools_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Bass Pro</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./Online_Travel_Site1_files/w3.css">
+<link rel="stylesheet" href="./Online_Travel_Site1_files/css">
+<!-- <link rel="stylesheet" href="./Online_Travel_Site1_files/font-awesome.min.css"> -->
+
+<!-- PagerDuty Extras -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link data-originalfavicon="/assets/favicon.png" href="https://assets.sabre.com/common/favicon.ico" id="favicon" rel="icon" type="image/png" />
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.myLink {display: none}
+</style>
+
+<!--PagerDuty extras-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head><body class="w3-light-grey" data-gr-c-s-loaded="true">
+
+<!-- Navigation Bar -->
+<div class="w3-bar w3-white w3-border-bottom w3-xlarge">
+  <a href="https://www.w3schools.com/w3css/tryw3css_templates_travel2.htm#" class="w3-bar-item w3-button w3-text-red w3-hover-red"><b><i class="fa fa-map-marker w3-margin-right"></i>BassProDuty.com</b></a>
+  <a href="https://www.w3schools.com/w3css/tryw3css_templates_travel2.htm#" class="w3-bar-item w3-button w3-right w3-hover-red w3-text-grey"><i class="fa fa-search"></i></a>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+  <img class="w3-image" src="./images/basspro.jpg" alt="basspro" width="1500" height="600">
+  <div class="w3-padding w3-display-bottommiddle" style="width:30%">
+    <div class="w3-bar w3-blue">
+      <button class="w3-bar-item w3-button tablink w3-white" onclick="openLink(event, &#39;Flight&#39;);"><i class="fa fa-plane w3-margin-right"></i>Orders</button>
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, &#39;Hotel&#39;);"><i class="fa fa-bed w3-margin-right"></i>Rent</button>
+      <button class="w3-bar-item w3-button tablink" onclick="openLink(event, &#39;Car&#39;);"><i class="fa fa-car w3-margin-right"></i>Locations</button>
+    </div>
+
+    <!-- Tabs -->
+    <div id="Flight" class="w3-container w3-white w3-padding-16 myLink" style="display: block;">
+      <h3>Check Order</h3>
+            <p><button class="w3-button w3-blue" onclick="loginErrExample('Login');return(false);">Check Order</button></p>
+    </div>
+
+    <div id="Hotel" class="w3-container w3-white w3-padding-16 myLink" style="display: none;">
+      <h3>Find the best hotels</h3>
+      <p>Book a hotel with us and get the best fares and promotions.</p>
+      <p><button class="w3-button w3-blue" onclick="loginErrExample('Login');return(false);">Search Hotels</button></p>
+    </div>
+
+    <div id="Car" class="w3-container w3-white w3-padding-16 myLink" style="display: none;">
+      <p><span class="w3-tag w3-deep-orange">DISCOUNT!</span> Special offer if you book today: 25% off anywhere in the world</p>
+      <input class="w3-input w3-border" type="text" placeholder="Pick-up point">
+      <p><button class="w3-button w3-blue">Search Availability</button></p>
+    </div>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:700px;">
+
+  <!-- Contact -->
+  <div class="w3-container">
+    <h2>Contact</h2>
+    <p>What's your next adventure?</p>
+    <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
+    <i class="fa fa-phone" style="width:30px"></i> Phone: <a class="sw-phone" title="Call with Dialpad" target="_blank" href="https://dialpad.com/launch?phone=%2B00%20151515">+1 (1234151515</a><br>
+    <i class="fa fa-envelope" style="width:30px"> </i> Email: email@my_mail.com<br>
+    <form action="https://www.w3schools.com/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required="" name="Name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required="" name="Email"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required="" name="Message"></p>
+      <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button></p>
+    </form>
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-center w3-opacity w3-margin-bottom">
+  <h5>Find Us On</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script>
+// Tabs
+function openLink(evt, linkName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("myLink");
+  for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(linkName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+// Click on the first tablink on load
+document.getElementsByClassName("tablink")[0].click();
+</script>
+
+<!--Pagerduty extras all from here-->
+<script>
+
+        function loginErrExample() {
+
+          $.ajax({
+            method: "GET",
+            url: "https://event-sender.herokuapp.com/ondemand/5fe33507-1637-4549-a2c1-57559e7ab067",
+
+          })
+            .done(function( msg ) {
+             // alert( "Hello: " + msg );
+          });
+          alert('Error Locating Order')
+          return false;
+        }
+        </script>
+
+
+</body></html>

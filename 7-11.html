@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<img src="./images/7-11franch.jpg" alt="HTML5 Icon" width="180" height="49">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, , shrink-to-fit=no" />
+<link rel="stylesheet" type="text/css" href="tswnavbar.css" />
+
+<!--
+<form>
+Store Number:<br>
+  <input type="text" name="storenumber"><br>
+
+</form>
+-->
+
+<div id="tswcssbuttons">
+<ul>
+<li><a href="javascript:slurpee()">Slurpee</a></li>
+<li><a href="javascript:networkissue()">Network Issue</a></li>
+<li><a href="javascript:cashregister()">Cash Register</a></li>
+<li><a href="javascript:pinpad()">Pinpad / Card Issue</a></li>
+<li><a href="javascript:gaspump()">Gas Pump Down</a></li>
+<li><a href="javascript:loginErrExample()">Ice Machine Down</a></li>
+<li><a href="javascript:loginErrExample()">Water Leak</a></li>
+<li><a href="javascript:loginErrExample()">Coffee Issue</a></li>
+</ul>
+
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+        function slurpee() {
+
+		  var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
+          var date = new Date();
+          customerName = "dhuggins@pagerduty.com";
+          dedupKey = customerName + date.getMinutes() + date.getSeconds();
+
+          var eventObject = '{ ' +
+              ' "client_url": "https://www.7-eleven.com", ' +
+              ' "service_key"\: "' + serviceKey + '", ' +
+              ' "incident_key"\: "' + dedupKey + '", ' +
+              ' "client"\: "7-Eleven Store Support", ' +
+              ' "vendor"\: "7-Eleven Store Support", ' +
+              ' "event_type"\: "trigger", ' +
+              ' "contexts"\: [ ' +
+              ' {  ' +
+                  ' "src": "https://cdn.shopify.com/s/files/1/0194/1992/2496/products/Pink-Hero_2048x2048_93fd66c4-d1d3-4b8e-8953-3f5eb8d959c8_360x.jpg?v=1569443930", ' +
+                  ' "alt": "Slurpee", ' +
+                  ' "href": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
+                  ' "type": "image" ' +
+              ' }, ' +
+          '{ ' +
+          ' "text": "Store ID", ' +
+          '  "href": "https://www.7-eleven.com/locator", ' +
+          '  "type": "link" ' +
+          ' } ' +
+          ' ], ' +
+        ' "details": { ' +
+          ' "body": "[Franchise Alert] Slurpee Machine Down" , ' +
+          ' "Order Value": "$500", ' +
+          ' "priority": "High", ' +
+          ' "title": "[Franchise Alert] Slurpee Machine Down", ' +
+          ' "event_id": "8125363154448140714", ' +
+          ' "tags": "7-Eleven, slurpee, store", ' +
+          ' "Customer": "'+ customerName + '" ' +
+          ' }, ' +
+        ' "description": "[Franchise Alert] Slurpee Machine Down" ' +
+        '}'
+
+        console.log(eventObject)
+
+          $.ajax({
+            method: "POST",
+            url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+            data: eventObject,
+            success:function(resp){console.log(JSON.stringify(resp));}
+          })
+            .done(function( msg ) {
+          });
+		  window.prompt('Confirm Store ID.')
+          alert('Slurpee Machine Down Reported .')
+          return false;
+        }
+        </script>
+
+<script>
+        function networkissue() {
+
+		  var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
+          var date = new Date();
+          customerName = "dhuggins@pagerduty.com";
+          dedupKey = customerName + date.getMinutes() + date.getSeconds();
+
+          var eventObject = '{ ' +
+              ' "client_url": "https://www.7-eleven.com", ' +
+              ' "service_key"\: "' + serviceKey + '", ' +
+              ' "incident_key"\: "' + dedupKey + '", ' +
+              ' "client"\: "7-Eleven Store Support", ' +
+              ' "vendor"\: "7-Eleven Store Support", ' +
+              ' "event_type"\: "trigger", ' +
+              ' "contexts"\: [ ' +
+              ' {  ' +
+                  ' "src": "https://darrenhuggins.github.io/images/7-eleven-scale.png", ' +
+                  ' "alt": "Network", ' +
+                  ' "href": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
+                  ' "type": "image" ' +
+              ' }, ' +
+          '{ ' +
+          ' "text": "Store ID", ' +
+          '  "href": "https://www.7-eleven.com/locator", ' +
+          '  "type": "link" ' +
+          ' } ' +
+          ' ], ' +
+        ' "details": { ' +
+          ' "body": "[Franchise Alert] Network Issue" , ' +
+          ' "Order Value": "$500", ' +
+          ' "priority": "High", ' +
+          ' "title": "[Franchise Alert] Network Issue", ' +
+          ' "event_id": "8125363154448140714", ' +
+          ' "tags": "7-Eleven, network, store", ' +
+          ' "Customer": "'+ customerName + '" ' +
+          ' }, ' +
+        ' "description": "[Franchise Alert] Network Issue" ' +
+        '}'
+
+        console.log(eventObject)
+
+          $.ajax({
+            method: "POST",
+            url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+            data: eventObject,
+            success:function(resp){console.log(JSON.stringify(resp));}
+          })
+            .done(function( msg ) {
+          });
+		  window.prompt('Confirm Store ID.')
+          alert('Network Issue Reported .')
+          return false;
+        }
+        </script>
+
+		<script>
+        function cashregister() {
+
+          var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
+          var date = new Date();
+          customerName = "dhuggins@pagerduty.com";
+          dedupKey = customerName + date.getMinutes() + date.getSeconds();
+
+          var eventObject = '{ ' +
+              ' "client_url": "https://www.7-eleven.com", ' +
+              ' "service_key"\: "' + serviceKey + '", ' +
+              ' "incident_key"\: "' + dedupKey + '", ' +
+              ' "client"\: "7-Eleven Store Support", ' +
+              ' "vendor"\: "7-Eleven Store Support", ' +
+              ' "event_type"\: "trigger", ' +
+              ' "contexts"\: [ ' +
+              ' {  ' +
+                  ' "src": "https://www.7-eleven.com/sites/default/files/2018-09/transact-min.jpg", ' +
+                  ' "alt": "register", ' +
+                  ' "href": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
+                  ' "type": "image" ' +
+              ' }, ' +
+          '{ ' +
+          ' "text": "Store ID", ' +
+          '  "href": "https://www.7-eleven.com/locator", ' +
+          '  "type": "link" ' +
+          ' } ' +
+          ' ], ' +
+        ' "details": { ' +
+          ' "body": "[Franchise Alert] Cash Register Down" , ' +
+          ' "Order Value": "$500", ' +
+          ' "priority": "High", ' +
+          ' "title": "[Franchise Alert] Cash Register Down", ' +
+          ' "event_id": "8125363154448140714", ' +
+          ' "tags": "7-Eleven, slurpee, store", ' +
+          ' "Customer": "'+ customerName + '" ' +
+          ' }, ' +
+        ' "description": "[Franchise Alert] Cash Register Down" ' +
+        '}'
+
+        console.log(eventObject)
+
+          $.ajax({
+            method: "POST",
+            url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+            data: eventObject,
+            success:function(resp){console.log(JSON.stringify(resp));}
+          })
+            .done(function( msg ) {
+          });
+
+		  window.prompt('Confirm Store ID.')
+          alert('Cash Register Down Reported .')
+          return false;
+        }
+        </script>
+
+		<script>
+        function pinpad() {
+
+          var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
+          var date = new Date();
+          customerName = "dhuggins@pagerduty.com";
+          dedupKey = customerName + date.getMinutes() + date.getSeconds();
+
+          var eventObject = '{ ' +
+              ' "client_url": "https://www.7-eleven.com", ' +
+              ' "service_key"\: "' + serviceKey + '", ' +
+              ' "incident_key"\: "' + dedupKey + '", ' +
+              ' "client"\: "7-Eleven Store Support", ' +
+              ' "vendor"\: "7-Eleven Store Support", ' +
+              ' "event_type"\: "trigger", ' +
+              ' "contexts"\: [ ' +
+              ' {  ' +
+                  ' "src": "https://www.7-eleven.com/sites/default/files/2018-09/transact-min.jpg", ' +
+                  ' "alt": "register", ' +
+                  ' "href": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
+                  ' "type": "image" ' +
+              ' }, ' +
+          '{ ' +
+          ' "text": "Store ID", ' +
+          '  "href": "https://www.7-eleven.com/locator", ' +
+          '  "type": "link" ' +
+          ' } ' +
+          ' ], ' +
+        ' "details": { ' +
+          ' "body": "[Franchise Alert] Pinpad Issue" , ' +
+          ' "Order Value": "$500", ' +
+          ' "priority": "High", ' +
+          ' "title": "[Franchise Alert] Pinpad Issue", ' +
+          ' "event_id": "8125363154448140714", ' +
+          ' "tags": "7-Eleven, slurpee, store", ' +
+          ' "Customer": "'+ customerName + '" ' +
+          ' }, ' +
+        ' "description": "[Franchise Alert] Pinpad Issue" ' +
+        '}'
+
+        console.log(eventObject)
+
+          $.ajax({
+            method: "POST",
+            url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+            data: eventObject,
+            success:function(resp){console.log(JSON.stringify(resp));}
+          })
+            .done(function( msg ) {
+          });
+
+          window.prompt('Confirm Store ID.')
+		  alert('Pinpad Issue Reported. ')
+          return false;
+
+        }
+        </script>
+
+        <script>
+            function gaspump() {
+
+              var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
+              var date = new Date();
+              customerName = "dhuggins@pagerduty.com";
+              dedupKey = customerName + date.getMinutes() + date.getSeconds();
+
+              var eventObject = '{ ' +
+                  ' "client_url": "https://www.7-eleven.com", ' +
+                  ' "service_key"\: "' + serviceKey + '", ' +
+                  ' "incident_key"\: "' + dedupKey + '", ' +
+                  ' "client"\: "7-Eleven Store Support", ' +
+                  ' "vendor"\: "7-Eleven Store Support", ' +
+                  ' "event_type"\: "trigger", ' +
+                  ' "contexts"\: [ ' +
+                  ' {  ' +
+                      ' "src": "https://s3-media2.fl.yelpcdn.com/bphoto/mEqBIQ7m0bSTRRbsbYcrjw/o.jpg", ' +
+                      ' "alt": "register", ' +
+                      ' "href": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
+                      ' "type": "image" ' +
+                  ' }, ' +
+              '{ ' +
+              ' "text": "Store ID", ' +
+              '  "href": "https://www.7-eleven.com/locator", ' +
+              '  "type": "link" ' +
+              ' } ' +
+              ' ], ' +
+            ' "details": { ' +
+              ' "body": "[Franchise Alert] Gas Pump Issue" , ' +
+              ' "Order Value": "$500", ' +
+              ' "priority": "High", ' +
+              ' "title": "[Franchise Alert] Gas Pump Issue", ' +
+              ' "event_id": "8125363154448140714", ' +
+              ' "tags": "7-Eleven, Gas Pump, store", ' +
+              ' "Customer": "'+ customerName + '" ' +
+              ' }, ' +
+            ' "description": "[Franchise Alert] Gas Pump Issue" ' +
+            '}'
+
+            console.log(eventObject)
+
+              $.ajax({
+                method: "POST",
+                url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+                data: eventObject,
+                success:function(resp){console.log(JSON.stringify(resp));}
+              })
+                .done(function( msg ) {
+              });
+
+              window.prompt('Confirm Store ID.')
+    		  alert('Gas Pump Issue Reported. ')
+              return false;
+
+            }
+            </script>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8" http-equiv="Cache-control" content="NO-CACHE">
+
+  <title>Best Buy Games Click and Collect</title>
+
+  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113051118-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-113051118-1');
+</script>
+
+
+
+</head>
+
+<style>
+  #checkoutError {
+      width: 100%;
+      padding: 50px 0;
+      text-align: center;
+      background-color: red;
+      margin-top: 20px;
+      display:none;
+  }
+  </style>
+
+<body>
+ <!-- <img height="85" width="225" src="images/bblogo.png"> -->
+  <header class="w3-display-container w3-content w3-hide-small" style="max-width:1400px">
+  <img class="w3-image" src="./Online_Travel_Site1_files/bbindexlogo.png" alt="Apollo" width="80%" height="80%">
+  <div class="w3-display-middle" style="width:65%">
+   <!-- <h1>Best Buy Click and Collect</h1> -->
+
+<br/>
+Name: <input type="text" name="customerName" id="customer-name" value="Stephanie Wong"><br>
+
+<br/>
+
+
+<div class="shopping-cart">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://www.att.com/catalog/en/skus/images/apple-iphone%20xs%20max-space%20gray-100x160.jpg">
+    </div>
+    <div class="product-details">
+      <div class="product-title">iPhone XS</div>
+      <p class="product-description">Our vision has always been to create an iPhone that is entirely screen. One so immersive the device itself disappears into the experience. And so intelligent it can respond to a tap, your voice, and even a glance. With iPhone X, that vision is now a reality. Say hello to the future.</p>
+    </div>
+    <div class="product-price">999.99</div>
+    <div class="product-quantity">
+      <input type="number" value="2" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">1998.98</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="http://media.4rgos.it/s/Argos/7258398_R_SET?$Web$&$Main570$&w=440&h=440&qlt=70&$W_TMB_440_BADGE$&topright=clearance">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Minecraft Deluxe Overworld Pack</div>
+      <p class="product-description">This Deluxe set includes 8 3-inch figures, accessories and more! Characters include; Creeper, Villager, Iron Golem, Steve, Alex, Zombie, Skeleton and Enderman.</p>
+    </div>
+    <div class="product-price">20.99</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">20.99</div>
+  </div>
+
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">1620.99</div>
+    </div>
+    <div class="totals-item">
+      <label>Sales Tax (5%)</label>
+      <div class="totals-value" id="cart-tax">81.05</div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">15.00</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">1707.04</div>
+    </div>
+  </div>
+
+      <button id="checkoutButton" class="checkout" onclick="completeCheckout()">Checkout</button>
+  </div>
+
+
+<div id="checkoutError">
+  <b>Error in Checkout</b>
+  <br/>"Connection to data source updateOrderDB can not be established!
+  <br/>Reason: Invalid operation. The connection is closed. - complete stack
+  <br/>at System.Data.SqlClient.SqlConnection.GetOpenConnection()
+  <br/>at System.Data.SqlClient.SqlConnection.get_Parser()
+  <br/>at System.Data.SqlClient.SqlConnection.Open()", Please try later
+</div>
+
+<script>
+
+  function guid() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
+  }
+
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function updateResponsePanel()
+  {
+    var x = document.getElementById("checkoutError");
+    x.style.display = "block";
+
+    document.getElementById("checkoutButton").innerHTML = "Checkout";
+
+  }
+
+  function completeCheckout() {
+
+    var serviceKey = getParameterByName('service_key');
+    if (!serviceKey) serviceKey = "25c7766eede1452ca427a2cd12a6d457";
+
+    var x = document.getElementById("checkoutError");
+    x.style.display = "none";
+
+    document.getElementById("checkoutButton").innerHTML = "Working";
+
+    setTimeout(updateResponsePanel, 4000);
+
+    var node = document.getElementById('cart-total'),
+    orderValue = node.innerHTML
+
+    node = document.getElementById('customer-name'),
+    customerName = node.value
+
+    //Deprecated guid() 
+    var date = new Date()
+    dedupKey = customerName + date.getMinutes() + date.getSeconds()
+
+    //alert (customerName);
+
+    // Requires jQuery
+    var eventObject = '{ ' +
+        ' "client_url": "https://rpm.newrelic.com/accounts/1818495/applications/105833762", ' +
+        ' "service_key"\: "' + serviceKey + '", ' +
+        ' "incident_key"\: "' + dedupKey + '", ' +
+        ' "client"\: "New Relic", ' +
+        ' "vendor"\: "New Relic", ' +
+        ' "event_type"\: "trigger", ' +
+        ' "contexts"\: [ ' +
+        ' {  ' +
+            ' "src": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
+            ' "alt": "Snapshot of metric", ' +
+            ' "href": "http://www.timchinchen.co.uk/DemoImages/NRErrors1.png", ' +
+            ' "type": "image" ' +
+        ' }, ' +
+
+        ' { ' +
+        ' "text": "Conference URL (Zoom)", ' +
+        ' "href": "https://pagerduty.zoom.us/j/5080555253", ' +
+        ' "type": "link" ' +
+        ' }, ' +
+
+      '{' +
+      '  "text": "Conference Dial (Zoom)",  ' +
+      '  "href": "tel:+442036950088,,5080555253#",  ' +
+      '  "type": "link"  ' +
+      '},' +
+    '{' +
+      ' "text": "Monitor Status", ' +
+      ' "href": "https://appp.datadoghq.com/monitors#72563?to_ts=1452282540000&group=host%3Aprod-web-xdb09&from_ts=1452281340000", ' +
+      ' "type": "link" ' +
+    '},' +
+    '{ ' +
+    ' "text": "Triggered Monitors", ' +
+    '  "href": "https://rpm.newrelic.com/accounts/1818495/applications/105833762", ' +
+    '  "type": "link" ' +
+    ' } ' +
+    ' ], ' +
+  ' "details": { ' +
+    ' "body": "[Critical] Increased response time detected on the Checkout page, High Error rates <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
+    ' "Order Value": ' + orderValue + ', ' +
+    ' "priority": "High", ' +
+    ' "title": "[Critical] Increased response time detected on the Checkout page, High Error rates", ' +
+    ' "event_id": "8125363154448140714", ' +
+    ' "tags": "aws-prod, base, env:prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb", ' +
+    ' "Customer": "'+ customerName + '" ' +
+    ' }, ' +
+  ' "description": "[Critical] Increased response time detected on the Checkout page, High Error rates" ' +
+  '}'
+
+  console.log(eventObject)
+
+
+  //    ' "Customer Name": ' + customerName + ', ' +
+
+
+    //var settings = {
+    //  "url": "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+    //  "method": "POST",
+    //  "data":  eventObject,
+    //  "headers": {
+    //    "Accept": "application/vnd.pagerduty+json;version=2",
+    //    "Authorization": "Token token=V_uHsBDv3G2NxyimTYVg",
+    //  }
+    //};
+
+    //$.ajax(settings).done(function (response) {
+    //  console.log(response);
+    //  $("#responseText").text(JSON.stringify(response));
+    //});
+
+    //$.ajax({
+    //  type: "POST",
+    //  url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+    //  data: eventObject,
+    //  success: null,
+    //  dataType: "json"
+    //});
+
+    $.ajax({
+      method: "POST",
+      url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+      data: eventObject
+    })
+      .done(function( msg ) {
+        //alert( "Data Saved: " + msg );
+    });
+
+
+
+  }
+  </script>
+
+
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+
+    <script  src="js/index.js"></script>
+
+
+
+</body>
+
+</html>
