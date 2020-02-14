@@ -316,7 +316,120 @@ window.PFJ = PFJ;
 <script src="./Pilot FlyingJ - myRewards_files/loyalty.main.v-637157163520000000.js"></script><div class="loading"></div>
 <script src="./Pilot FlyingJ - myRewards_files/templates.v-637157163520000000.js"></script>
 
+<!--Pagerduty extras all from here-->
+<script>
 
+                function guid() {
+                    function s4() {
+                        return Math.floor((1 + Math.random()) * 0x10000)
+                            .toString(16)
+                            .substring(1);
+                    }
+                    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                        s4() + '-' + s4() + s4() + s4();
+                }
+                function getParameterByName(name, url) {
+                    if (!url) url = window.location.href;
+                    name = name.replace(/[\[\]]/g, "\\$&");
+                    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                            results = regex.exec(url);
+                    if (!results) return null;
+                    if (!results[2]) return '';
+                    return decodeURIComponent(results[2].replace(/\+/g, " "));
+                }
+                function loginErrExample() {
+                        //alert('In loginErrExample');
+                    var serviceKey = getParameterByName('service_key');
+                    if (!serviceKey) serviceKey = "R019O3KQPYNL000CTTD4TQVV61TFYLXU"; /*ML service key*/
+                    var date = new Date();
+                    customerName = "Eduardo Gomez";
+                    dedupKey = "ACDD" + date.getMinutes() + date.getSeconds();
+                 // alert (customerName);
+                    var orderValue = '0';
+                    // Requires jQuery
+                    var eventObject = '{ ' +
+                            ' "client_url": "https://rpm.newrelic.com/accounts/1818495/applications/105833762", ' +
+                            ' "service_key"\: "' + serviceKey + '", ' +
+                            ' "incident_key"\: "' + dedupKey + '", ' +
+                            ' "client"\: "New Relic", ' +
+                            ' "vendor"\: "New Relic", ' +
+                            ' "event_type"\: "trigger", ' +
+                            ' "contexts"\: [ ' +
+                            ' {  ' +
+                                    ' "src": "https://docs.newrelic.com/sites/default/files/styles/inline_660px/public/thumbnails/image/transactions-ui-alert.png?itok=LgLy0yee", ' +
+                                    ' "alt": "Snapshot of metric", ' +
+                                    ' "href": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
+                                    ' "type": "image" ' +
+                            ' }, ' +
+                            ' { ' +
+                            ' "text": "Conference URL (Zoom)", ' +
+                            ' "href": "https://pagerduty.zoom.us/j/5080555253", ' +
+                            ' "type": "link" ' +
+                            ' }, ' +
+                        '{' +
+                        '  "text": "Conference Dial (Zoom)",  ' +
+                        '  "href": "tel:+442036950088,,5080555253#",  ' +
+                        '  "type": "link"  ' +
+                        '},' +
+                    '{' +
+                        ' "text": "Monitor Status", ' +
+                        ' "href": "https://appp.datadoghq.com/monitors#72563?to_ts=1452282540000&group=host%3Aprod-web-xdb09&from_ts=1452281340000", ' +
+                        ' "type": "link" ' +
+                    '},' +
+                    '{ ' +
+                    ' "text": "Triggered Monitors", ' +
+                    '  "href": "https://rpm.newrelic.com/accounts/1818495/applications/105833762", ' +
+                    '  "type": "link" ' +
+                    ' } ' +
+                    ' ], ' +
+                ' "details": { ' +
+                    ' "body": "[Critical] API500 Java errors on Sign Up, High Error rates <br/> Object Reference Not Set and Connection pool exceeded errors detected" , ' +
+                    ' "Order Value": ' + orderValue + ', ' +
+                    ' "priority": "High", ' +
+                    ' "title": "[Critical] API500 Java errors on Sign Up, High Error rates", ' +
+                    ' "event_id": "8125363154448140714", ' +
+                    ' "tags": "aws-prod, base, env:prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb", ' +
+                    ' "Customer": "'+ customerName + '" ' +
+                    ' }, ' +
+                ' "description": "[Critical] API500 Java errors on Sign Up, High Error rates" ' +
+                '}'
+             // alert('part 1 ' + eventObject);
+                console.log(eventObject)
+             // alert('Part 2 ' + eventObject);
+                //    ' "Customer Name": ' + customerName + ', ' +
+                    //var settings = {
+                    //  "url": "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+                    //  "method": "POST",
+                    //  "data":  eventObject,
+                    //  "headers": {
+                    //    "Accept": "application/vnd.pagerduty+json;version=2",
+                    //    "Authorization": "Token token=62cc79716eeb4d1fbaa1950e67cde29a",
+                    //  }
+                    //};
+                    //$.ajax(settings).done(function (response) {
+                    //  console.log(response);
+                    //  $("#responseText").text(JSON.stringify(response));
+                    //});
+                    //$.ajax({
+                    //  type: "POST",
+                    //  url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+                    //  data: eventObject,
+                    //  success: null,
+                    //  dataType: "json"
+                    //});
+                    $.ajax({
+                        method: "POST",
+                        url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+                        data: eventObject
+                    })
+                        .done(function( msg ) {
+                         // alert( "Hello: " + msg );
+                    });
+
+                    alert('******* JAVA Error on Sign Up page ********')
+                    return false;
+                }
+                </script>
 
 
 
