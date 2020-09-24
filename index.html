@@ -166,7 +166,8 @@ Name: <input type="text" name="customerName" id="customer-name" value="Darren Wo
   function completeCheckout() {
 
     var serviceKey = getParameterByName('service_key');
-    if (!serviceKey) serviceKey = "r019o3kqpynl000cttd4tqvv61tfylxu";
+   // if (!serviceKey) serviceKey = "r019o3kqpynl000cttd4tqvv61tfylxu";
+     if (!serviceKey) serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
 
     var x = document.getElementById("checkoutError");
     x.style.display = "none";
@@ -181,7 +182,6 @@ Name: <input type="text" name="customerName" id="customer-name" value="Darren Wo
     node = document.getElementById('customer-name'),
     customerName = node.value
 
-    //Deprecated guid() 
     var date = new Date()
     dedupKey = customerName + date.getMinutes() + date.getSeconds()
 
@@ -211,7 +211,7 @@ Name: <input type="text" name="customerName" id="customer-name" value="Darren Wo
 
       '{' +
       '  "text": "Conference Dial (Zoom)",  ' +
-      '  "href": "tel:+442036950088,,5080555253#",  ' +
+      '  "href": "tel:+555151514123,,5080555253#",  ' +
       '  "type": "link"  ' +
       '},' +
     '{' +
@@ -226,45 +226,18 @@ Name: <input type="text" name="customerName" id="customer-name" value="Darren Wo
     ' } ' +
     ' ], ' +
   ' "details": { ' +
-    ' "body": "[Critical] Transaction Failures on eCommerce server <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
+    ' "body": "[Critical] Transaction Failures on checkout service <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
     ' "Order Value": ' + orderValue + ', ' +
     ' "priority": "High", ' +
-    ' "title": "[Critical] Transaction Failures on E-Commerce server", ' +
+    ' "title": "[Critical] Transaction Failures on checkout service", ' +
     ' "event_id": "8125363154448140714", ' +
     ' "tags": "aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb", ' +
     ' "Customer": "'+ customerName + '" ' +
     ' }, ' +
-  ' "description": "[Critical] Transaction Failures on E-Commerce server" ' +
+  ' "description": "[Critical] Transaction Failures on checkout service" ' +
   '}'
 
   console.log(eventObject)
-
-
-  //    ' "Customer Name": ' + customerName + ', ' +
-
-
-    //var settings = {
-    //  "url": "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-    //  "method": "POST",
-    //  "data":  eventObject,
-    //  "headers": {
-    //    "Accept": "application/vnd.pagerduty+json;version=2",
-    //    "Authorization": "Token token=V_uHsBDv3G2NxyimTYVg",
-    //  }
-    //};
-
-    //$.ajax(settings).done(function (response) {
-    //  console.log(response);
-    //  $("#responseText").text(JSON.stringify(response));
-    //});
-
-    //$.ajax({
-    //  type: "POST",
-    //  url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-    //  data: eventObject,
-    //  success: null,
-    //  dataType: "json"
-    //});
 
     $.ajax({
       method: "POST",
