@@ -9,9 +9,21 @@
     .catch(console.error);
 </script>  
   
+import {api} from 'pdjs';
+
+const pd = api({token: 'b7THe3Jnj9Gt8bP8ZRuR'});
+
+pd.get('/incidents')
+  .then({data, resource, next} => console.log(data, resource, next))
+  .catch(console.error);
+
+// Similarly, for `post`, `put`, `patch` and `delete`.
+pd.post('/incidents', { data: { ... } }).then(...)
+  
+  
 <head>
   <meta charset="UTF-8" http-equiv="Cache-control" content="NO-CACHE">
-
+  
   <title>Games Click and Collect</title>
 
   <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
