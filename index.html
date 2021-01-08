@@ -2,6 +2,12 @@
 <html lang="en" >
 
 <!-- joe is adding bad code again !!-->
+<script src="https://raw.githubusercontent.com/PagerDuty/pdjs/main/dist/pdjs.js"></script>
+<script>
+  PagerDuty.api({token: 'b7THe3Jnj9Gt8bP8ZRuR', endpoint: '/incidents'})
+    .then(response => console.log(response.data))
+    .catch(console.error);
+</script>  
   
 <head>
   <meta charset="UTF-8" http-equiv="Cache-control" content="NO-CACHE">
