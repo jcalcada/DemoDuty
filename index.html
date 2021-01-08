@@ -2,24 +2,7 @@
 <html lang="en" >
 
 <!-- joe is adding bad code again !!-->
-<script src="https://raw.githubusercontent.com/PagerDuty/pdjs/main/dist/pdjs.js"></script>
-<script>
-  PagerDuty.api({token: 'b7THe3Jnj9Gt8bP8ZRuR', endpoint: '/incidents'})
-    .then(response => console.log(response.data))
-    .catch(console.error);
-</script>  
-  
-import {api} from 'pdjs';
 
-const pd = api({token: 'b7THe3Jnj9Gt8bP8ZRuR'});
-
-pd.get('/incidents')
-  .then({data, resource, next} => console.log(data, resource, next))
-  .catch(console.error);
-
-// Similarly, for `post`, `put`, `patch` and `delete`.
-pd.post('/incidents', { data: { ... } }).then(...)
-  
   
 <head>
   <meta charset="UTF-8" http-equiv="Cache-control" content="NO-CACHE">
