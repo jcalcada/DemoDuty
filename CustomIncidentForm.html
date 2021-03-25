@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Update Ticket</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<!-- Table for custom fields in incident -->
+<font size="2" face="Sans-serif" >
+<tbody>
+    <tr>
+        <td>
+            <p><span class="mandatory">*</span>Incident Classification</p>
+        </td>
+        <td>
+            <select name="close_code" style="width:200px" id="close_code">
+                <option value="none" selected="none">--None--</option>
+                <option value="False-positive">False-positive</option>
+                <option value="ThresholdTuningActionApplied">Threshold tuning action applied</option>
+                <option value="TurnedToRealIncident">Turned to real Incident</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><span class="mandatory">*</span>category</p>
+        </td>
+        <td>
+            <select name="resolution_category" style="width:200px" id="resolution_category">
+                <option value="none" selected="none">--None--</option>
+                <option value="Reviewed">Reviewed</option>
+                <option value="NotReviewed">Not Reviewed</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><span class="mandatory">*</span>Additional notes</p>
+        </td>
+        <td>
+            <textarea name="close_notes" rows="3" cols="50" id="close_notes" value=""></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><span class="mandatory">*</span>Pagerduty Account email</p>
+        </td>
+        <td>
+            <input type="email" id="email" size="30" required>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="validation_msg" class="validation_msg" name="validation_msg" style="display: none;">Please fill-in all the details</div>
+        </td>
+        <td>
+            <input type="submit" id="update" value="update" onclick="validateUpdate()" />
+        </td>
+    </tr>
+</tbody>
+</font>
+
+
+<script type="text/javascript"> 
+
+//grab incident ID from URL and regEx out
+function getIncidentID(){
+var url = (window.location != window.parent.location)
+            ? document.referrer
+            : document.location.href;
+
+var regEx = /incidents\/(.*)/;
+ return regEx.exec(url)[1]
+}
+
+//validates fields have been filled in and uses the notes section to update pagerduties notes section 
+function validateUpdate(){
+    
+    if(document.getElementById("close_code").value=='none' || document.getElementById("resolution_category").value=='none' || document.getElementById("close_notes").value=='')
+    {
+        document.getElementById("validation_msg").style.display = "block";
+        return false;
+    }   
+    else
+    {
+
+        sendPayload(buildPayload());
+        document.getElementById("validation_msg").style.display = "none";
+        return true;
+    }
+}
+
+// build notes payload using fields from table
+function buildPayload(){
+
+    var notes = document.getElementById("close_notes").value
+    var incidentClass = document.getElementById("close_code").value
+    var category = document.getElementById("resolution_category").value
+
+    var payload = '{' + 
+          ' "note": { ' +
+          ' "content":' +'" '+" " + incidentClass + ", "+ category + ", " + notes +' "' +
+       '}' +
+    '}'
+
+
+    return payload
+}
+
+//send payload to pagerduty API - must change token in the header section below
+function sendPayload(payload){
+
+    var email = document.getElementById("email")
+    
+     $.ajax({
+      method: "POST",
+      url: "https://api.pagerduty.com/incidents/"+getIncidentID()+"/notes",
+      headers: { 'Accept': 'application/vnd.pagerduty+json;version=2', 'Authorization': 'Token token=b7THe3Jnj9Gt8bP8ZRuR', 'Content-Type': 'application/json', 'From': email.value },
+      data: payload
+    })
+      .done(function( msg ) {
+        alert("Your incident will be updated shortly. No further action required!");
+    });
+
+}
+
+
+
+</script>
+</body>
+
+</html>
