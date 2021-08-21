@@ -122,7 +122,9 @@
 			        `code_verifier=${codeVerifier}`
 			    let data = await postData(requestTokenUrl, {})
 		        if (data.access_token) {
-		        	return data.access_token
+				console.log("check",data)
+				return data.access_token
+
 		        } else {
 		        	console.log("Error in response from PD:", data)
 		        }
