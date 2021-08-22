@@ -110,7 +110,7 @@
 			        `code_challenge=${encodeURI(challenge)}&` +
 			        `code_challenge_method=S256`
 
-			    console.log("check getautho", authURL)
+			    console.log("check getautho", authUrl)
 			    return authUrl
 			}
 
