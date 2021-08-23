@@ -150,7 +150,7 @@
                     <i>Connect to PagerDuty to use <b>${title}</b></i>
                     <p>&nbsp;</p>
                     <a id="pd-login-button" class="btn btn-lg btn-primary auth-button">
-                        Authorize PagerDuty
+                        Authorize PagerDuty!
                     </a>
                 </div>
 				`
@@ -169,16 +169,18 @@
                 }
 
 			    const urlParams = new URLSearchParams(window.location.search)
-			    let redirectURL = redirectURL_param
+			     console.log("const set for urlParams:", urlParams)
+				let redirectURL = redirectURL_param
 			    if ( !redirectURL ) {
 			    	// assume that the redirect URL is the current page
 			    	redirectURL = `${location.protocol}//${location.host}${location.pathname}`
 			    }
-			    
+			    console.log("redirecturl:", redirectURL)
+				
 			    let code = urlParams.get('code')
 			    let codeVerifier = sessionStorage.getItem('code_verifier')
 			    if (code && codeVerifier) {
-			        PDOAuth.exchangeCodeForToken(clientID, "https://pdt-jcalcada.pagerduty.com", codeVerifier, code).then((token) => {
+			        PDOAuth.exchangeCodeForToken(clientID, redirectURL, codeVerifier, code).then((token) => {
 			        	if (token) {
 			        		sessionStorage.setItem('pd_access_token', token)
 			        		sessionStorage.removeItem('code_verifier')
