@@ -178,7 +178,7 @@
 			    let code = urlParams.get('code')
 			    let codeVerifier = sessionStorage.getItem('code_verifier')
 			    if (code && codeVerifier) {
-			        PDOAuth.exchangeCodeForToken(clientID, redirectURL, codeVerifier, code).then((token) => {
+			        PDOAuth.exchangeCodeForToken(clientID, "https://pdt-jcalcada.pagerduty.com", codeVerifier, code).then((token) => {
 			        	if (token) {
 			        		sessionStorage.setItem('pd_access_token', token)
 			        		sessionStorage.removeItem('code_verifier')
