@@ -123,7 +123,7 @@
 			        `code_verifier=${codeVerifier}`
 			    let data = await postData(requestTokenUrl, {})
 		        if (data.access_token) {
-				console.log("check",data)
+				console.log("check data",data)
 				return data.access_token
 
 		        } else {
