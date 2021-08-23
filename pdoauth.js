@@ -147,7 +147,7 @@
                 <div align="center">
                     <p>&nbsp;</p>
                     <h2>PagerDuty Login</h2>
-                    <i>Connect to PagerDuty to use <b>${title}</b></i>
+                    <i>Connect to PagerDuty to use this <b>${title}</b></i>
                     <p>&nbsp;</p>
                     <a id="pd-login-button" class="btn btn-lg btn-primary auth-button">
                         Authorize PagerDuty!
@@ -169,8 +169,8 @@
                 }
 
 			    const urlParams = new URLSearchParams(window.location.search)
-			     console.log("const set for urlParams:", urlParams)
 				let redirectURL = redirectURL_param
+				console.log("redirectURL :", redirectURL)
 			    if ( !redirectURL ) {
 			    	// assume that the redirect URL is the current page
 			    	redirectURL = `${location.protocol}//${location.host}${location.pathname}`
