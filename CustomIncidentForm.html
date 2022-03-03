@@ -118,7 +118,7 @@ function sendPayload(payload){
      $.ajax({
       method: "POST",
       url: "https://api.pagerduty.com/incidents/"+getIncidentID()+"/notes",
-      headers: { 'Accept': 'application/vnd.pagerduty+json;version=2', 'Authorization': 'Token token=b7THe3Jnj9Gt8bP8ZRuR', 'Content-Type': 'application/json', 'From': email.value },
+      headers: { 'Accept': 'application/vnd.pagerduty+json;version=2', 'Authorization': 'Token token=u+-HxoHK2gL_Kx5DkfZg', 'Content-Type': 'application/json', 'From': email.value },
       data: payload
     })
       .done(function( msg ) {
