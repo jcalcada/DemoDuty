@@ -263,6 +263,7 @@ z-index: 100 !important;
                 <div class="wg-hdr-container" data-wg-hdr-container="">
                     
 <div class="wg-hdr-header-bar-container" data-wg-hds-header-bar="">
+    <button id="checkoutButton" onclick="completeCheckout()">Refill Presciption Online!</button>    
     <div class="widget-header-bar" data-widget="header-bar" data-wg-hb-is-rx-user-refills-tool-text="My Refills" data-wg-hb-is-not-rx-user-refills-tool-text="Refills">
         <div class="widget-header-skip-to-main">
             <a href="https://www1.shoppersdrugmart.ca/en/store-locator/store/913/?utm_source=G&amp;utm_medium=lpm&amp;utm_campaign=LPM_SDM#" data-wg-hb-skip-to-main="">Skip to Main Content</a>
@@ -285,7 +286,7 @@ z-index: 100 !important;
                                 <a href="https://mypharmacy.shoppersdrugmart.ca/en" data-wg-hb-tool-button="" class="wg-hb-tool-button" target="_self">
                                     <span class="wg-hb-tool-image wg-hb-tool-image-refills"></span>
                                     <div class="wg-hb-tool-text" data-wg-hb-refills-tool-text="">Refills</div>
-                                    <button id="checkoutButton" class="checkout" onclick="completeCheckout()">Refill Presciption Online!</button>
+
                                 </a>
                             </li>
                     
@@ -457,9 +458,6 @@ function completeCheckout() {
       .done(function( msg ) {
         //alert( "Data Saved: " + msg );
     });
-
-
-
   }
   </script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
