@@ -1552,8 +1552,8 @@ z-index: 100 !important;
 <!--JOEC-->
                 
 <div id="checkoutError">
-  <b>Error in Checkout</b>
-  <br/>"Connection to data source updateOrderDB can not be established!
+  <b>Error in Refill</b>
+  <br/>"Connection to data source OrderRefillDB can not be established!
   <br/>Reason: Invalid operation. The connection is closed. - complete stack
   <br/>at System.Data.SqlClient.SqlConnection.GetOpenConnection()
   <br/>at System.Data.SqlClient.SqlConnection.get_Parser()
@@ -3610,11 +3610,9 @@ var j=document.createElement("script"),f=document.getElementsByTagName("script")
 
         </script><script src="./Jane &amp; Major Mackenzie, Maple _ Shoppers Drug Mart®_files/satellite-5b71f0d364746d01890022f3.js"></script><img width="1" height="1" src="./Jane &amp; Major Mackenzie, Maple _ Shoppers Drug Mart®_files/generic" style="display: none;"><iframe src="./Jane &amp; Major Mackenzie, Maple _ Shoppers Drug Mart®_files/iframe.html" id="mm_sync_back_ground" title="MediaMath Advertising" style="visibility: hidden; display: none;" data-gtm-yt-inspected-2070686_58="true" data-gtm-yt-inspected-2070686_476="true" data-gtm-yt-inspected-2070686_530="true"></iframe><script src="./Jane &amp; Major Mackenzie, Maple _ Shoppers Drug Mart®_files/satellite-5b730d9264746d11bf004ae3.js"></script><script src="./Jane &amp; Major Mackenzie, Maple _ Shoppers Drug Mart®_files/satellite-5b5f18ad64746d6feb000d0b.js"></script>
 
-            function completeCheckout() {
+function completeCheckout() {
 
-    var serviceKey = getParameterByName('service_key');
-   // if (!serviceKey) serviceKey = "r019o3kqpynl000cttd4tqvv61tfylxu";
-     if (!serviceKey) serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
+    serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
 
     var x = document.getElementById("checkoutError");
     x.style.display = "none";
@@ -3623,11 +3621,11 @@ var j=document.createElement("script"),f=document.getElementsByTagName("script")
 
     setTimeout(updateResponsePanel, 4000);
 
-    var node = document.getElementById('cart-total'),
-    orderValue = node.innerHTML
+//  var node = document.getElementById('cart-total'),
+    orderValue = '42.39'
 
-    node = document.getElementById('customer-name'),
-    customerName = node.value
+//    node = document.getElementById('customer-name'),
+    customerName = 'Joe Calcada'
 
     var date = new Date()
     dedupKey = customerName + date.getMinutes() + date.getSeconds()
@@ -3673,10 +3671,10 @@ var j=document.createElement("script"),f=document.getElementsByTagName("script")
     ' } ' +
     ' ], ' +
   ' "details": { ' +
-    ' "body": "[Critical] Transaction Failures on checkout service <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
+    ' "body": "[Critical] Transaction Failures on Refill service <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
     ' "Order Value": ' + orderValue + ', ' +
     ' "priority": "High", ' +
-    ' "title": "[Critical] Transaction Failures on checkout service", ' +
+    ' "title": "[Critical] Transaction Failures on Refill service", ' +
     ' "event_id": "8125363154448140714", ' +
     ' "tags": "aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb", ' +
     ' "Customer": "'+ customerName + '" ' +
