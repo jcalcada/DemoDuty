@@ -50,9 +50,11 @@
     document.getElementById("checkoutButton").innerHTML = "Checkout";
   }
 
-  function completeCheckout() {
+function completeCheckout() {
 
-    serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
+    var serviceKey = getParameterByName('service_key');
+   // if (!serviceKey) serviceKey = "r019o3kqpynl000cttd4tqvv61tfylxu";
+     if (!serviceKey) serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
 
     var x = document.getElementById("checkoutError");
     x.style.display = "none";
