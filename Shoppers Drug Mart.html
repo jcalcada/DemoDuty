@@ -62,11 +62,8 @@ function completeCheckout() {
 
     setTimeout(updateResponsePanel, 4000);
 
-    var node = document.getElementById('cart-total'),
-    orderValue = node.innerHTML
-
-    node = document.getElementById('customer-name'),
-    customerName = node.value
+    orderValue = "26.78";
+    customerName = "Betty White";
 
     var date = new Date()
     dedupKey = customerName + date.getMinutes() + date.getSeconds()
@@ -112,15 +109,15 @@ function completeCheckout() {
     ' } ' +
     ' ], ' +
   ' "details": { ' +
-    ' "body": "[Critical] Transaction Failures on checkout service <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
+    ' "body": "[Critical] Checkout service transaction failure<br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
     ' "Order Value": ' + orderValue + ', ' +
     ' "priority": "High", ' +
-    ' "title": "[Critical] Transaction Failures on checkout service", ' +
+    ' "title": "[Critical] Checkout service transaction failure", ' +
     ' "event_id": "8125363154448140714", ' +
     ' "tags": "aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb", ' +
     ' "Customer": "'+ customerName + '" ' +
     ' }, ' +
-  ' "description": "[Critical] Transaction Failures on checkout service" ' +
+  ' "description": "[Critical] Checkout service transaction failure" ' +
   '}'
 
     console.log(eventObject)
