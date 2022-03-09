@@ -55,10 +55,10 @@
     var x = document.getElementById("checkoutError");
     x.style.display = "none";
     document.getElementById("checkoutButton").innerHTML = "Working";
-    setTimeout(updateResponsePanel, 4000);
+    setTimeout(updateResponsePanel, 8000);
     orderValue = '26.78'
     customerName = 'Betty White'
-    dedupKey = customerName + date.getMinutes() + date.getSeconds()
+    dedupKey = customerName
 
     alert (customerName);
 
@@ -96,7 +96,7 @@
       data: eventObject
     })
       .done(function( msg ) {
-        //alert( "Data Saved: " + msg );
+        alert( "Data Saved: " + msg );
     });
   }
   </script>
