@@ -65,10 +65,7 @@ function completeCheckout() {
     orderValue = "26.78";
     customerName = "Betty White";
 
-    var date = new Date()
-    dedupKey = customerName + date.getMinutes() + date.getSeconds()
-
-    alert (customerName);
+    alert ("Error in transaction");
 
     // Requires jQuery
     var eventObject = '{ ' +
@@ -76,48 +73,29 @@ function completeCheckout() {
         ' "service_key"\: "' + serviceKey + '", ' +
         ' "incident_key"\: "' + dedupKey + '", ' +
         ' "client"\: "New Relic", ' +
-        ' "vendor"\: "New Relic", ' +
         ' "event_type"\: "trigger", ' +
         ' "contexts"\: [ ' +
         ' {  ' +
-            ' "src": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
             ' "alt": "Snapshot of metric", ' +
-            ' "href": "http://www.timchinchen.co.uk/DemoImages/NRErrors1.png", ' +
+            ' "href": "http://jcalcada.github.io/DemoDuty/NRErrors1.png", ' +
             ' "type": "image" ' +
         ' }, ' +
-
         ' { ' +
         ' "text": "Conference URL (Zoom)", ' +
         ' "href": "https://pagerduty.zoom.us/j/5080555253", ' +
         ' "type": "link" ' +
         ' }, ' +
-
-      '{' +
-      '  "text": "Conference Dial (Zoom)",  ' +
-      '  "href": "tel:+555151514123,,5080555253#",  ' +
-      '  "type": "link"  ' +
-      '},' +
-    '{' +
-      ' "text": "Monitor Status", ' +
-      ' "href": "https://appp.datadoghq.com/monitors#72563?to_ts=1452282540000&group=host%3Aprod-web-xdb09&from_ts=1452281340000", ' +
-      ' "type": "link" ' +
-    '},' +
-    '{ ' +
-    ' "text": "Triggered Monitors", ' +
-    '  "href": "https://rpm.newrelic.com/accounts/1818495/applications/105833762", ' +
-    '  "type": "link" ' +
-    ' } ' +
     ' ], ' +
   ' "details": { ' +
-    ' "body": "[Critical] Checkout service transaction failure<br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
+    ' "body": "[Critical] Transaction failures on pharmacy checkout process<br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
     ' "Order Value": ' + orderValue + ', ' +
     ' "priority": "High", ' +
-    ' "title": "[Critical] Checkout service transaction failure", ' +
+    ' "title": "[Critical] Transaction failures on pharmacy checkout process", ' +
     ' "event_id": "8125363154448140714", ' +
     ' "tags": "aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb", ' +
     ' "Customer": "'+ customerName + '" ' +
     ' }, ' +
-  ' "description": "[Critical] Checkout service transaction failure" ' +
+  ' "description": "[Critical] Transaction failures on pharmacy checkout process" ' +
   '}'
 
     console.log(eventObject)
@@ -128,7 +106,7 @@ function completeCheckout() {
       data: eventObject
     })
       .done(function( msg ) {
-        alert( "Data Saved: " + msg );
+ //       alert( "Data Saved: " + msg );
     });
   }
   </script>
