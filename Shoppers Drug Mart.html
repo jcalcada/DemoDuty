@@ -65,14 +65,11 @@ function completeCheckout() {
 
     orderValue = "26.78";
     customerName = "Betty White";
-
-    alert ("Error in transaction");
-
+  
     // Requires jQuery
     var eventObject = '{ ' +
         ' "client_url": "https://rpm.newrelic.com/accounts/1818495/applications/105833762", ' +
         ' "service_key"\: "' + serviceKey + '", ' +
-        ' "incident_key"\: "' + "inc123" + '", ' +
         ' "client"\: "New Relic", ' +
         ' "event_type"\: "trigger", ' +
         ' "contexts"\: [ ' +
@@ -85,7 +82,7 @@ function completeCheckout() {
         ' "text": "Conference URL (Zoom)", ' +
         ' "href": "https://pagerduty.zoom.us/j/5080555253", ' +
         ' "type": "link" ' +
-        ' }, ' +
+        ' } ' +
     ' ], ' +
   ' "details": { ' +
     ' "body": "[Critical] Transaction failures on pharmacy checkout process<br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
@@ -98,8 +95,6 @@ function completeCheckout() {
     ' }, ' +
   ' "description": "[Critical] Transaction failures on pharmacy checkout process" ' +
   '}'
-
-    console.log(eventObject)
 
     $.ajax({
       method: "POST",
