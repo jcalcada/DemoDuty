@@ -29,7 +29,7 @@
 
 <body>
   <img class="w3-image" src="checkout.png" alt="Apollo" width="100%" height="100%">
-  <button id="checkoutButton" class="checkout" onclick="completeCheckout()">Checkout</button>
+  <button id="checkoutButton" onclick="completeCheckout()">Checkout</button>
 
   <div id="checkoutError">
   <b>Error in Checkout</b>
@@ -54,14 +54,9 @@
     var x = document.getElementById("checkoutError");
     x.style.display = "none";
     document.getElementById("checkoutButton").innerHTML = "Working";
-
     setTimeout(updateResponsePanel, 4000);
-    orderValue = '
-
-    node = document.getElementById('customer-name'),
-    customerName = node.value
-
-    var date = new Date()
+    orderValue = '26.78'
+    customerName = 'Betty White'
     dedupKey = customerName + date.getMinutes() + date.getSeconds()
 
     //alert (customerName);
@@ -72,7 +67,6 @@
         ' "service_key"\: "' + serviceKey + '", ' +
         ' "incident_key"\: "' + dedupKey + '", ' +
         ' "client"\: "New Relic", ' +
-        ' "vendor"\: "New Relic", ' +
         ' "event_type"\: "trigger", ' +
         ' "contexts"\: [ ' +
         ' {  ' +
