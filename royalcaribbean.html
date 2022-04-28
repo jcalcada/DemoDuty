@@ -1,70 +1,102 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <!--- joe is adding some bad code again !!!!!!! -->
-<!-- again   new  -->
-  
+
 <head>
   <meta charset="UTF-8" http-equiv="Cache-control" content="NO-CACHE">
-  
-  <title>Royal Caribbean Search</title>
 
-</head>
+  <title>Caribbean Cruise</title>
 
-<style>
-  #checkoutError {
-      width: 100%;
-      padding: 50px 0;
-      text-align: center;
-      background-color: red;
-      margin-top: 20px;
-      display:none;
-  }
-  </style>
-  
   <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<style>
+  #checkoutError {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: red;
+    margin-top: 20px;
+    display: none;
+  }
+</style>
 
 <body>
-  <img class="w3-image" src="royal.png" alt="Apollo" width="100%" height="100%">
+  <header class="w3-display-container w3-content w3-hide-small" style="max-width:1400px">
+    <img class="w3-image" src="cruise.png" alt="cruise" width="80%" height="80%">
+    <div class="w3-display-middle" style="width:100%">
+      <button id="checkoutButton" class="checkout" onclick="completeCheckout()">Purchase</button>
+      </div>
 
-  <div class="shopping-cart">
-     <p>
-     <button id="checkoutButton" align="right" class="checkout" color="blue" onclick="completeCheckout()">SEARCH CRUISES</button>
-  </div>
 
-  <div id="checkoutError">
-  <b>Error in Checkout</b>
-  <br/>"Connection to data source updateOrderDB can not be established!
-  <br/>Reason: Invalid operation. The connection is closed. - complete stack
-  <br/>at System.Data.SqlClient.SqlConnection.GetOpenConnection()
-  <br/>at System.Data.SqlClient.SqlConnection.Open()", Please try later 
-  </div>
+      <div id="checkoutError">
+        <b>Error in Checkout</b>
+        <br />"Connection to data source updateOrderDB can not be established!
+        <br />Reason: Invalid operation. The connection is closed. - complete stack
+        <br />at System.Data.SqlClient.SqlConnection.GetOpenConnection()
+        <br />at System.Data.SqlClient.SqlConnection.get_Parser()
+        <br />at System.Data.SqlClient.SqlConnection.Open()", Please try later
+      </div>
 
-<script>
-  
-  function updateResponsePanel()
-  {
-    var x = document.getElementById("checkoutError");
-    x.style.display = "block";
-    document.getElementById("checkoutButton").innerHTML = "Checkout";
-  }
+      <script>
 
-function completeCheckout() {
+        function guid() {
+          function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+          }
+          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+        }
 
-  
-    var serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
+        function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
 
-    var x = document.getElementById("checkoutError");
-    x.style.display = "none";
-    document.getElementById("checkoutButton").innerHTML = "Working";
+        function updateResponsePanel() {
+          var x = document.getElementById("checkoutError");
+          x.style.display = "block";
 
-    orderValue = "26.78";
-    customerName = "Betty White";
-  
-    var eventObject = {
+          document.getElementById("checkoutButton").innerHTML = "Checkout";
+
+        }
+
+        function completeCheckout() {
+
+          var serviceKey = getParameterByName('service_key');
+          // if (!serviceKey) serviceKey = "r019o3kqpynl000cttd4tqvv61tfylxu";
+          if (!serviceKey) serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
+
+          var x = document.getElementById("checkoutError");
+          x.style.display = "none";
+
+          document.getElementById("checkoutButton").innerHTML = "Working";
+
+          setTimeout(updateResponsePanel, 4000);
+
+          var node = document.getElementById('cart-total'),
+            orderValue = node.innerHTML
+
+          node = document.getElementById('customer-name'),
+            customerName = node.value
+
+          var date = new Date()
+          dedupKey = customerName + date.getMinutes() + date.getSeconds()
+
+          //alert (customerName);
+
+          var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
             service_key: serviceKey,
             incident_key: dedupKey,
