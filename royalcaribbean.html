@@ -27,15 +27,15 @@
   #button2 {
   display: inline-block;
   padding: 8px 12px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   text-decoration: none;
   outline: none;
   color: #fff;
   background-color:#005edc;
   position:absolute;
-  right: 100px;
-  top: 660px;
+  right: 95px;
+  top: 655px;
 }
 
 </style>
@@ -87,7 +87,7 @@
           var x = document.getElementById("checkoutError");
           x.style.display = "none";
 
-          document.getElementById("button2").innerHTML = "SEARCH CRUISES";
+          document.getElementById("button2").innerHTML = "WORKING.       ";
 
           setTimeout(updateResponsePanel, 4000);
 
@@ -99,9 +99,7 @@
 
           var date = new Date()
           dedupKey = customerName + date.getMinutes() + date.getSeconds()
-
-          //alert (customerName);
-
+          
           var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
             service_key: serviceKey,
