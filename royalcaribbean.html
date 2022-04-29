@@ -93,13 +93,13 @@
               },
             ],
             details: {
-              body: '[Critical] Search Failures on Selection Service<br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
+              body: 'Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
               priority: 'High',
-              title: '[Critical] Search Failures on Selection service',
+              title: '[Critical] Search Failures on eCommerce service',
               event_id: '8125363154448140714',
               tags: 'aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb',
             },
-            description: '[Critical] Search Failures on Selection service',
+            description: '[Critical] Search Failures on eCommerce service',
           };
           setTimeout(() => {
             fetch('https://events.pagerduty.com/generic/2010-04-15/create_event.json', {
