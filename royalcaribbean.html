@@ -75,17 +75,16 @@
           var x = document.getElementById("checkoutError");
           x.style.display = "none";
 
-          document.getElementById("button2").innerHTML = "WORKING..........";
+          document.getElementById("button2").innerHTML = "WORKING...........";
 
           setTimeout(updateResponsePanel, 4000);
 
           var date = new Date()
-          dedupKey = date.getMinutes() + date.getSeconds()
           
           var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
             service_key: serviceKey,
-            incident_key: dedupKey,
+            incident_key: date,
             client: 'New Relic',
             vendor: 'New Relic',
             event_type: 'trigger',
