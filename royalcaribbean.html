@@ -54,13 +54,13 @@
       function updateResponsePanel() {
           var x = document.getElementById("checkoutError");
           x.style.display = "block";
-          document.getElementById("button2").innerHTML = "SEARCHING.........";
+          document.getElementById("button2").innerHTML = "ERROR.............";
         }
 
       function completeCheckout() {
           var x = document.getElementById("checkoutError");
           x.style.display = "none";
-          document.getElementById("button2").innerHTML = "ERROR.............";
+          document.getElementById("button2").innerHTML = "SEARCHING.........";
           setTimeout(updateResponsePanel, 8000);
           var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
