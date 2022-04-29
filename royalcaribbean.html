@@ -77,11 +77,6 @@
                 type: 'image',
               },
               {
-                text: 'Conference URL (Zoom)',
-                href: 'https://pagerduty.zoom.us/j/5080555253',
-                type: 'link',
-              },
-              {
                 text: 'Conference Dial (Zoom)',
                 href: 'tel:+555151514123,,5080555253#',
                 type: 'link',
@@ -98,7 +93,7 @@
               },
             ],
             details: {
-              body: '[Critical] Search Failures on Selection <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
+              body: '[Critical] Search Failures on Selection Service<br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
               priority: 'High',
               title: '[Critical] Search Failures on Selection service',
               event_id: '8125363154448140714',
@@ -106,9 +101,6 @@
             },
             description: '[Critical] Search Failures on Selection service',
           };
-
-          console.log(eventObject)
-
           setTimeout(() => {
             fetch('https://events.pagerduty.com/generic/2010-04-15/create_event.json', {
               method: 'POST',
