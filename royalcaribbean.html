@@ -60,15 +60,6 @@
 
       <script>
 
-        function getParameterByName(name, url) {
-          if (!url) url = window.location.href;
-          name = name.replace(/[\[\]]/g, "\\$&");
-          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-          if (!results) return null;
-          if (!results[2]) return '';
-          return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
 
         function updateResponsePanel() {
           var x = document.getElementById("checkoutError");
@@ -80,9 +71,7 @@
 
         function completeCheckout() {
 
-          var serviceKey = getParameterByName('service_key');
-          // if (!serviceKey) serviceKey = "r019o3kqpynl000cttd4tqvv61tfylxu";
-          if (!serviceKey) serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
+          var serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
 
           var x = document.getElementById("checkoutError");
           x.style.display = "none";
@@ -91,14 +80,8 @@
 
           setTimeout(updateResponsePanel, 4000);
 
-          var node = document.getElementById('cart-total'),
-            orderValue = node.innerHTML
-
-          node = document.getElementById('customer-name'),
-            customerName = node.value
-
           var date = new Date()
-          dedupKey = customerName + date.getMinutes() + date.getSeconds()
+          dedupKey = date.getMinutes() + date.getSeconds()
           
           var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
@@ -145,7 +128,6 @@
             description: '[Critical] Search Failures on Selection service',
           };
 
-
           console.log(eventObject)
 
           setTimeout(() => {
@@ -160,17 +142,6 @@
           }, 10_000);
         }
       </script>
-
-
-
-      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-
-
       <script src="js/index.js"></script>
-
-
-
 </body>
-
 </html>
