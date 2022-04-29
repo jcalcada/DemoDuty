@@ -5,12 +5,7 @@
 
 <head>
   <meta charset="UTF-8" http-equiv="Cache-control" content="NO-CACHE">
-
   <title>Royal Caribbean Cruise</title>
-
-<!----  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> --->
-<!---- link rel="stylesheet" href="css/style.css" --->
-
 </head>
 
 <style>
@@ -39,17 +34,15 @@
 
 </style>
  
-
-  <body>
+<body>
   <header class="w3-display-container w3-content w3-hide-small" style="max-width:1400px">
     <img class="w3-image" src="royal.png" alt="cruise" width="100%" height="100%">
     <div class="w3-display-right">
       <button id="button2" onclick="completeCheckout()">SEARCH CRUISES</button>
       </div>
 
-
       <div id="checkoutError">
-        <b>Error in Checkout</b>
+        <b>Error in Search</b>
         <br />"Connection to data source updateOrderDB can not be established!
         <br />Reason: Invalid operation. The connection is closed. - complete stack
         <br />at System.Data.SqlClient.SqlConnection.GetOpenConnection()
@@ -58,8 +51,6 @@
       </div>
 
       <script>
-
-
         function updateResponsePanel() {
           var x = document.getElementById("checkoutError");
           x.style.display = "block";
@@ -113,17 +104,15 @@
               },
             ],
             details: {
-              body: '[Critical] Search Failures on Selection <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
+              body: '[Critical] Search Failures on eCommerce Service <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
               priority: 'High',
-              title: '[Critical] Search Failures on Selection service',
+              title: '[Critical] Search Failures on eCommerce Service',
               event_id: '8125363154448140714',
               tags: 'aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb',
             },
-            description: '[Critical] Search Failures on Selection service',
+            description: '[Critical] Search Failures on eCommerce Service',
           };
-
           console.log(eventObject)
-
           setTimeout(() => {
             fetch('https://events.pagerduty.com/generic/2010-04-15/create_event.json', {
               method: 'POST',
