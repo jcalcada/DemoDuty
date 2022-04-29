@@ -78,13 +78,11 @@
           document.getElementById("button2").innerHTML = "WORKING...........";
 
           setTimeout(updateResponsePanel, 4000);
-
-          var date = new Date()
           
           var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
             service_key: serviceKey,
-            incident_key: date,
+            incident_key: '2022',
             client: 'New Relic',
             vendor: 'New Relic',
             event_type: 'trigger',
