@@ -61,7 +61,7 @@
           var x = document.getElementById("checkoutError");
           x.style.display = "none";
           document.getElementById("button2").innerHTML = "WORKING...........";
-          setTimeout(updateResponsePanel, 4000);
+          setTimeout(updateResponsePanel, 8000);
           var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
             service_key: 'R02EVR084Y6B9HPZTM94T0MWV03RO2NJ',
@@ -110,7 +110,7 @@
               body: JSON.stringify(eventObject)
             }).then(response => response.json())
               .then(data => console.log('POST response', data));
-          }, 10_000);
+          }, 2_000);
         }
       </script>
 </body>
