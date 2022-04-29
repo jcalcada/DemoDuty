@@ -9,7 +9,7 @@
   <title>Royal Caribbean Cruise</title>
 
 <!----  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> -->
-<!----  <link rel="stylesheet" href="css/style.css"> -->
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -70,8 +70,6 @@
 
         function completeCheckout() {
 
-          var serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   //Abacus checkout service
-
           var x = document.getElementById("checkoutError");
           x.style.display = "none";
 
@@ -81,7 +79,7 @@
           
           var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
-            service_key: serviceKey,
+            service_key: 'R02EVR084Y6B9HPZTM94T0MWV03RO2NJ',
             incident_key: '2022',
             client: 'New Relic',
             vendor: 'New Relic',
