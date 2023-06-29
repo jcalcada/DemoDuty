@@ -217,12 +217,12 @@
             ],
             details: {
               body: '[Critical] Transaction Failures on checkout service <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
-              'Order Value': orderValue,
+              'Order Value': orderValue, guid()
               priority: 'High',
               title: '[Critical] Transaction Failures on checkout service',
               event_id: '8125363154448140714',
               tags: 'aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb',
-              Customer: "'+ customerName +",
+              Customer: "'+ customerName +'",
             },
             description: '[Critical] Transaction Failures on checkout service',
           };
