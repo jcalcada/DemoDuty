@@ -176,7 +176,7 @@
             customerName = node.value
 
           var date = new Date()
-          dedupKey = customerName + guid() + date.getMinutes() + date.getSeconds()
+          dedupKey = guid() + date.getSeconds()
 
           //alert (customerName);
 
