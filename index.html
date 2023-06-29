@@ -35,7 +35,7 @@
       <!-- <h1>Best Buy Click and Collect</h1> -->
 
       <br />
-      Name: <input type="text" name="customerName" id="customer-name" value="Darren Wong"><br>
+      Name: <input type="text" name="customerName" id="customer-name" value="Joe Calcada"><br>
 
       <br />
 
@@ -183,7 +183,7 @@
           var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
             service_key: serviceKey,
-            incident_key: dedupKey+guid(),
+            incident_key: dedupKey,
             client: 'New Relic',
             vendor: 'New Relic',
             event_type: 'trigger',
@@ -222,7 +222,7 @@
               title: '[Critical] Transaction Failures on checkout service',
               event_id: '8125363154448140714',
               tags: 'aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb',
-              Customer: "'+ customerName +'",
+              Customer: customerName,
             },
             description: '[Critical] Transaction Failures on checkout service',
           };
