@@ -134,8 +134,7 @@
               .toString(16)
               .substring(1);
           }
-          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-            s4() + '-' + s4() + s4() + s4();
+          return s4() + s4() + '-' + s4() + s4();
         }
 
         function getParameterByName(name, url) {
@@ -176,7 +175,7 @@
             customerName = node.value
 
           var date = new Date()
-          dedupKey = guid() + date.getSeconds()
+          dedupKey = guid() + '-' + date.getSeconds()
 
           //alert (customerName);
 
