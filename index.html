@@ -176,14 +176,14 @@
             customerName = node.value
 
           var date = new Date()
-          dedupKey = customerName + date.getMinutes() + date.getSeconds()
+          dedupKey = customerName + guid() + date.getMinutes() + date.getSeconds()
 
           //alert (customerName);
 
           var eventObject = {
             client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
             service_key: serviceKey,
-            incident_key: dedupKey,
+            incident_key: dedupKey+guid(),
             client: 'New Relic',
             vendor: 'New Relic',
             event_type: 'trigger',
@@ -217,7 +217,7 @@
             ],
             details: {
               body: '[Critical] Transaction Failures on checkout service <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
-              'Order Value': orderValue, guid()
+              'Order Value': orderValue,
               priority: 'High',
               title: '[Critical] Transaction Failures on checkout service',
               event_id: '8125363154448140714',
