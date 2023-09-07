@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!--- joe is adding some bad code againnn !!!!!!! -->
+
+<head>
+  <meta charset="UTF-8" http-equiv="Cache-control" content="NO-CACHE">
+  <title>Scotia Locations</title>
+  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+</head>
+
+<!---- change size of the buttons below ----> 
+<style>
+  #checkoutError {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: red;
+    margin-top: 20px;
+    display: none;
+  }
+  
+  #button2 {
+  display: inline-block;
+  padding: 200px 200px;
+  border:transparent;
+  color: #000000;
+  background-color:transparent;
+  position:absolute;
+  right: 200px;
+  top: 400px;
+  }
+</style>
+
+  <body>
+  <header class="w3-display-container w3-content w3-hide-small" style="max-width:1400px">
+    <img class="w3-image" src="scotia.jpg" alt="cruise" width="100%" height="100%">
+    <div class="w3-display-right">
+      <button id="button2" onclick="completeCheckout()">         </button>
+    </div>
+
+      <div id="checkoutError">
+        <b>Error in Search</b>
+        <br />"Connection to data source updateOrderDB can not be established!
+        <br />Reason: Invalid operation. The connection is closed. - complete stack
+        <br />at System.Data.SqlClient.SqlConnection.GetOpenConnection()
+        <br />at System.Data.SqlClient.SqlConnection.get_Parser()
+        <br />at System.Data.SqlClient.SqlConnection.Open()", Please try later
+      </div>
+
+    <script>
+
+      function updateResponsePanel() {
+          var x = document.getElementById("checkoutError");
+          x.style.display = "block";
+          document.getElementById("button2").innerHTML = "ERROR!";
+        }
+
+      function completeCheckout() {
+          var x = document.getElementById("checkoutError");
+          x.style.display = "none";
+          document.getElementById("button2").innerHTML = "SEARCHING...";
+          setTimeout(updateResponsePanel, 8000);
+          var eventObject = {
+            client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
+            service_key: 'R02EVR084Y6B9HPZTM94T0MWV03RO2NJ',
+            incident_key: '2022',
+            client: 'New Relic',
+            vendor: 'New Relic',
+            event_type: 'trigger',
+            contexts: [
+              {
+                src: 'https://jcalcada.github.io/DemoDuty/ErrorRate.png',
+                alt: 'Snapshot of metric',
+                href: 'https://jcalcada.github.io/DemoDuty/ErrorRate.png',
+                type: 'image',
+              },
+              {
+                text: 'Conference Dial (Zoom)',
+                href: 'tel:+555151514123,,5080555253#',
+                type: 'link',
+              },
+              {
+                text: 'Monitor Status',
+                href: 'https://appp.datadoghq.com/monitors#72563?to_ts=1452282540000&group=host%3Aprod-web-xdb09&from_ts=1452281340000',
+                type: 'link',
+              },
+              {
+                text: 'Triggered Monitors',
+                href: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
+                type: 'link',
+              },
+            ],
+            details: {
+              body: 'Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
+              priority: 'High',
+              title: '[Critical] Search Failures on web online service',
+              event_id: '8125363154448140714',
+              tags: 'aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb',
+            },
+            description: '[Critical] Search Failures on web online service',
+          };
+          setTimeout(() => {
+            fetch('https://events.pagerduty.com/generic/2010-04-15/create_event.json', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(eventObject)
+            }).then(response => response.json())
+              .then(data => console.log('POST response', data));
+          }, 8_000);
+        }
+      </script>
+</body>
+</html>
