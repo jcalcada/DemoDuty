@@ -28,8 +28,8 @@
   color: #000000;
   background-color:transparent;
   position:absolute;
-  right: 200px;
-  top: 400px;
+  left: 600px;
+  top: 200px;
   }
 </style>
 
@@ -42,7 +42,7 @@
 
       <div id="checkoutError">
         <b>Error in Search</b>
-        <br />"Connection to data source updateOrderDB can not be established!
+        <br />"Connection to data source SearchUpdateDB can not be established!
         <br />Reason: Invalid operation. The connection is closed. - complete stack
         <br />at System.Data.SqlClient.SqlConnection.GetOpenConnection()
         <br />at System.Data.SqlClient.SqlConnection.get_Parser()
@@ -95,11 +95,11 @@
             details: {
               body: 'Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
               priority: 'High',
-              title: '[Critical] Search Failures on web online service',
+              title: '[Critical] Search Failures on online web service',
               event_id: '8125363154448140714',
               tags: 'aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb',
             },
-            description: '[Critical] Search Failures on web online service',
+            description: '[Critical] Search Failures on online web service',
           };
           setTimeout(() => {
             fetch('https://events.pagerduty.com/generic/2010-04-15/create_event.json', {
