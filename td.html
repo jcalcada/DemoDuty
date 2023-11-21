@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8" http-equiv="Cache-control" content="NO-CACHE">
   <title>TD EasyWeb</title>
-  <link rel='shortcut icon' type='image/x-icon' href='td.ico.jpg' />
+  <link rel='shortcut icon' type='image/x-icon' href='td.ico' />
 </head>
 
 <!---- change size of the buttons below ----> 
@@ -35,7 +35,7 @@
 
   <body>
   <header class="w3-display-container w3-content w3-hide-small" style="max-width:1400px">
-    <img class="w3-image" src="scotia.jpg" alt="cruise" width="100%" height="100%">
+    <img class="w3-image" src="td.jpg" alt="td" width="100%" height="100%">
     <div class="w3-display-right">
       <button id="button2" onclick="completeCheckout()">         </button>
     </div>
@@ -95,11 +95,11 @@
             details: {
               body: 'Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
               priority: 'High',
-              title: '[Critical] Search Failures on online web service',
+              title: '[Critical] Registration Failures on EasyWeb',
               event_id: '8125363154448140714',
               tags: 'aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb',
             },
-            description: '[Critical] Search Failures on EasyWeb',
+            description: '[Critical] Registration Failures on EasyWeb',
           };
           setTimeout(() => {
             fetch('https://events.pagerduty.com/generic/2010-04-15/create_event.json', {
