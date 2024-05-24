@@ -1,27 +1,20 @@
-#!/bin/sh
-apt update -y && apt upgrade -y
-apt install -y git automake make gobjc++ libtool pkg-config libmspack-dev libglib2.0-dev libpam0g-dev libssl-dev libxml2-dev libxmlsec1-dev libx11-dev libxext-dev libxinerama-dev libxi-dev libxrender-dev libxrandr-dev libxtst-dev libgdk-pixbuf2.0-dev libgtk-3-dev libgtkmm-3.0-dev
-git clone https://github.com/vmware/open-vm-tools.git
-cd open-vm-tools/open-vm-tools/
-autoreconf -i
-./configure --disable-dependency-tracking
-make
-make install
-ldconfig
-cat > /etc/systemd/system/vmtoolsd.service << EOF
-[Unit]
-Description=Service for virtual machines hosted on VMware
-Documentation=http://github.com/vmware/open-vm-tools
-After=network-online.target
-
-[Service]
-ExecStart=/usr/local/bin/vmtoolsd
-Restart=always
-TimeoutStopSec=5
-
-[Install]
-WantedBy=multi-user.target
-EOF
-systemctl enable vmtoolsd.service
-systemctl start vmtoolsd.service
-systemctl status vmtoolsd.service
+wget https://repo.zabbix.com/zabbix/6.4/ubuntu-arm64/pool/main/z/zabbix-release/zabbix-release_6.4-1+ubuntu24.04_all.deb
+dpkg -i zabbix-release_6.4-1+ubuntu24.04_all.deb
+apt update
+apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent
+mysql -uroot -p
+password
+mysql> create database zabbix character set utf8mb4 collate utf8mb4_bin;
+mysql> create user zabbix@localhost identified by 'password';
+mysql> grant all privileges on zabbix.* to zabbix@localhost;
+mysql> set global log_bin_trust_function_creators = 1;
+mysql> quit;
+zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
+mysql -uroot -p
+password
+mysql> set global log_bin_trust_function_creators = 0;
+mysql> quit;
+echo /etc/zabbix/zabbix_server.conf
+echo DBPassword=password
+# systemctl restart zabbix-server zabbix-agent apache2
+# systemctl enable zabbix-server zabbix-agent apache2
