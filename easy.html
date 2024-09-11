@@ -11,10 +11,11 @@
     <div class="jumbotron">
      <h1 class="display-4">FireDuty 🔥</h1>
      <p class="lead">Trigger a real-time Pagerduty Event using the events API </p>
-	<p><h5>To use this "easy" button, replace the "YOUR_ROUTING_KEY" with a valid Event Orchestration or Service Orchestration key from your domain</p></h5>
-	<p><h5>Note that this utility is provided as is, with no warranty etc and should only be used for testing/demo purposes</h5></p>
-	<p><h5>Feel free to change the payload "summary" or "source" etc to your liking (but remember to ensure the JSON format is still correct)</p></h5>
-     </p>
+        <h6>
+	<p>replace the "YOUR_ROUTING_KEY" with a valid Event Orchestration or Service Orchestration key from your PD domain.</p>
+	<p>Note that this utility is provided as is, with no warranty etc and should only be used for testing/demo purposes</p>
+	<p>The example below is the minimal "CEF" fields needed to trigger an event, change "summary" etc to your liking (ensure your JSON is correctly formed)</p>
+	</h6>
 
      <p class="lead">
         <button name="button"  id="mainbutton" class="btn btn-outline-danger btn.lg "type="button" >Create Event ☎️  
@@ -29,33 +30,15 @@
 </html>
 <script>
 var mytext = {
-"routing_key": "YOUR_ROUTING_KEY",
-"payload": {
-    "summary": "[Synthetic Alert ] **WARNING** Low transactions detected via website",
-    "source": "Alertmanager",
-    "component": "Alertmanager",
-    "group": "Customer Website,Checkout",
-    "class": "Prometheus",
-    "custom_details": {
-      "AlarmName": "Transactions-Web",
-			"Customer": "Important Customer",
-      "AlarmDescription": "Transactions completed via website",
-      "AlertValue": "WARNING",
-      "AlertReason": "Transactions on *WEBSITE* > *EXPECTED VAL*",
-      "Table": "GLOBAL-VIEW"
-    },
-    "client": "Alertmanager",
-    "severity": "critical",
-    "client_url": "https://www.Alertmanager.com",
-    "images": [
-      {
-        "src": "https://logz.io/wp-content/uploads/2017/03/memory-graph.png",
-        "alt": "Snapshot of Alertmanager Dashboard",
-        "href": "https://logz.io/wp-content/uploads/2017/03/memory-graph.png"
-      }
-    ]
-  },
-    "event_action": "trigger"
+{
+    "routing_key": "YOUR_ROUTING_KEY",
+     "event_action": "trigger",
+     "dedup_key": "160749121905",
+     "payload": {
+         "summary": "The monitor DX External Login Uptime failed on one or more recent checks, Consecutive errors: 1", 
+         "source": "Uptrends",
+         "severity": "critical"
+    }
 }
 
 
