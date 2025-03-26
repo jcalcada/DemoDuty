@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- testing testing joe is adding some Poorly built coode again ---->
+
+<!--  <iframe width=775 height=500 src="https://pd-solution-consulting.forms.pushbot.com/form/bob1?hide-header=false&hide-footer=false" /> -->
+  
+<head>
+  <meta charset="UTF-8" http-equiv="Cache-control" content="NO-CACHE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  
+  <title>RBC DEMO</title>
+
+  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="css/style.css"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+</head>
+
+<style>
+  #checkoutError {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: red;
+    margin-top: 20px;
+    display: none;
+  }
+</style>
+
+<body>
+  <header>
+    <div class="w3-display-container w3-text-white">
+      <img src="rbc.jpg" alt="rbc" style="width:100%">
+    <button id="checkoutButton" class="w3-display-position w3-padding w3-blue" style="bottom:270px;left:181px" onclick="completeCheckout()">Open Account</button>
+        VIP: <input type="text" name="customerName" id="customer-name" value="VIP Group:B"><br>
+    </div>
+
+    <div id="checkoutError">
+        <b>Error in OpenAccount</b>
+        <br />"Connection to data source OpenAccountDB can not be established!
+        <br />Reason: Invalid operation. The connection is closed. - complete stack
+        <br />at System.Data.SqlClient.SqlConnection.GetOpenConnection()
+        <br />at System.Data.SqlClient.SqlConnection.get_Parser()
+        <br />at System.Data.SqlClient.SqlConnection.Open()", Please try later
+    </div>
+
+      <script>
+
+        function guid() {
+          function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+          }
+          return s4() + s4() + '-' + s4() + s4();
+        }
+
+        function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        function updateResponsePanel() {
+          var x = document.getElementById("checkoutError");
+          x.style.display = "block";
+          document.getElementById("checkoutButton").innerHTML = "......Error......";
+        }
+
+        function completeCheckout() {
+
+          var serviceKey = getParameterByName('service_key');
+        
+          if (!serviceKey) serviceKey = "R02EVR084Y6B9HPZTM94T0MWV03RO2NJ";   
+
+          var x = document.getElementById("checkoutError");
+          x.style.display = "none";
+
+          document.getElementById("checkoutButton").innerHTML = "....Working....";
+
+          setTimeout(updateResponsePanel, 4000);
+
+          var node = document.getElementById('cart-total'),
+            orderValue = node.innerHTML
+
+          node = document.getElementById('customer-name'),
+            customerName = node.value
+
+          var date = new Date()
+          dedupKey = guid() + '-' + date.getSeconds()
+
+          var eventObject = {
+            client_url: 'https://rpm.newrelic.com/accounts/1818495/applications/105833762',
+            service_key: serviceKey,
+            incident_key: dedupKey,
+            client: 'Dynatrace',
+            vendor: 'Dynatrace',
+            event_type: 'trigger',
+            contexts: [
+              {
+                src: 'https://jcalcada.github.io/DemoDuty/ErrorRate.png',
+                alt: 'Snapshot of metric',
+                href: 'https://jcalcada.github.io/DemoDuty/ErrorRate.png',
+                type: 'image',
+              },
+              {
+                text: 'Triggered Monitors',
+                href: 'https://dynatrace/accounts/1818495/applications/105833762',
+                type: 'link',
+              },
+            ],
+            details: {
+              body: '[Critical] OpenAccount Failure <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected',
+              'Order Value': orderValue,
+              priority: 'High',
+              event_id: '8125363154448140714',
+              tags: 'aws-prod, base, env:env-prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb',
+              Customer: customerName,
+            },
+            description: '[Critical] OpenAccount Failure',
+          };
+
+          console.log(eventObject)
+
+          setTimeout(() => {
+            fetch('https://events.pagerduty.com/generic/2010-04-15/create_event.json', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(eventObject)
+            }).then(response => response.json())
+              .then(data => console.log('POST response', data));
+          }, 10_000);
+        }
+      </script>
+</body>
+
+</html>
