@@ -9,12 +9,12 @@
 
 <body>
     <div class="jumbotron">
-     <h1 class="display-4">FireDuty 🔥</h1>
+     <h1 class="display-4">Siemens FireDuty Hands On Lab 🔥</h1>
      <p class="lead">Trigger a real-time Pagerduty Event using the events API </p>
         <h6>
 <p>Note that this utility is provided as is, with no warranty etc and should only be used for testing/demo purposes</p>
- <p>replace the "YOUR_ROUTING_KEY" with a valid Event Orchestration or Service Orchestration key from your PD domain.</p>
-	<p>The example below has the minimal "CEF" fields needed to trigger an event</p>
+ <p>replace the "YOUR_ROUTING_KEY" with your Orchestration API key from your PD domain, and replace "YOUR_NAME" with your first name</p>
+	<p>The example below shows the minimal "CEF" fields needed to trigger an event: more details can be found here: https://support.pagerduty.com/main/docs/pd-cef</p>
 	</h6>
 
      <p class="lead">
@@ -34,7 +34,7 @@ var mytext = {
      "event_action": "trigger",
      "payload": {
          "summary": "The monitor Login Uptime failed on one or more recent checks", 
-         "source": "your monitoring tool",
+         "source": "YOUR_NAME",
          "severity": "critical"
 	}
 }
