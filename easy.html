@@ -14,7 +14,7 @@
         <h6>
 	<p>replace the "YOUR_ROUTING_KEY" with a valid Event Orchestration or Service Orchestration key from your PD domain.</p>
 	<p>Note that this utility is provided as is, with no warranty etc and should only be used for testing/demo purposes</p>
-	<p>The example below is the minimal "CEF" fields needed to trigger an event, change "summary" etc to your liking (ensure your JSON is correctly formed)</p>
+	<p>The example below is the minimal "CEF" fields needed to trigger an event, for more details see: <html>https://support.pagerduty.com/main/docs/pd-cef</html></p>
 	</h6>
 
      <p class="lead">
@@ -30,12 +30,11 @@
 </html>
 <script>
 var mytext = {
-    "routing_key": "YOUR_ROUTING_KEY",
+    "routing_key": "REPLACE THIS WITH YOUR_ROUTING_KEY",
      "event_action": "trigger",
-     "dedup_key": "160749121905",
      "payload": {
-         "summary": "The monitor DX Login Uptime failed on one or more recent checks, Consecutive errors: 1", 
-         "source": "Uptrends",
+         "summary": "Your alert high level info shows up here", 
+         "source": "your monitor",
          "severity": "critical"
 	}
 }
