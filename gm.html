@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='shortcut icon' type='image/x-icon' href='fire.ico' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron">
+     <h1 class="display-4">GM PD Demo 🔥</h1>
+     <p class="lead">Get a page to your phone via the events API </p>
+        <h6>
+	<p>replace the "routing_key" value with a valid Event Orchestration or Service Orchestration key from your PD domain.</p>
+	<p>Note this utility is provided as is, with no warranty etc and should only be used for testing/demo purposes</p>
+	<p>The example below is the minimal "CEF" fields needed to trigger an incident. See <a href="https://support.pagerduty.com/main/docs/pd-cef"> for more details</a></p>
+	</h6>
+
+     <p class="lead">
+        <button name="button"  id="mainbutton" class="btn btn-outline-danger btn.lg "type="button" >Create Event ☎️  
+        </button>
+  
+
+      <div class="form-group">
+        <label form="exampleFormControlTextarea1">Valid Json Payload</label>
+        <textarea class="form-control" id="payload" name ="payload" rows="10"></textarea>
+      </div>
+     </div>
+</html>
+<script>
+var mytext = {
+    "routing_key": "REPLACE_THIS_WITH_YOUR_ROUTING_KEY",
+     "event_action": "trigger",
+     "payload": {
+         "summary": "Your alert high level info shows up here", 
+         "source": "your monitor",
+         "severity": "critical"
+	}
+}
+
+
+document.getElementById('payload').value=JSON.stringify(mytext, null, 4);
+document.addEventListener("keypress", function(event) {
+  if (event.keyCode == 50) {
+    eventfire()
+  }
+});
+var button = document.querySelector('button');
+button.onclick = function() {eventfire()}
+function eventfire(){
+const doctext=document.getElementById('mainbutton')
+doctext.innerHTML = "🔥🔥🔥🔥 Event Sent 🔥🔥🔥🔥"
+var xhr = new XMLHttpRequest();
+var url = "https://events.pagerduty.com/v2/enqueue";
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 202) {
+        var json = JSON.parse(xhr.responseText);
+        console.log(data);
+        doctext.innerHTML = "Create Event ☎️ "
+    }
+};
+var payload = document.getElementsByName('payload')[0].value
+console.log(payload);
+var data = JSON.stringify(payload);
+console.log(data);
+xhr.send(payload);
+}
+
+</script>
