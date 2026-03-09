@@ -1,0 +1,26 @@
+{
+  "mcp": {
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "pagerduty-api-key",
+        "description": "PagerDuty User API Key",
+        "password": true
+      }
+    ],
+    "servers": {
+      "pagerduty-mcp": {
+        "type": "stdio",
+        "command": "uvx",
+        "args": [
+          "pagerduty-mcp",
+          "--enable-write-tools"
+        ],
+        "env": {
+          "PAGERDUTY_USER_API_KEY": "${input:pagerduty-api-key}",
+          "PAGERDUTY_API_HOST": "https://api.pagerduty.com"
+        }
+      }
+    }
+  }
+}
