@@ -30,13 +30,19 @@
 </html>
 <script>
 var mytext = {
-    "routing_key": "REPLACE_THIS_WITH_YOUR_ROUTING_KEY",
-     "event_action": "trigger",
-     "payload": {
-         "summary": "Your alert high level info shows up here", 
-         "source": "your monitor",
-         "severity": "critical"
-	}
+"routing_key": "REPLACE_THIS_WITH_YOUR_ROUTING_KEY",
+"event_action": "trigger",
+"payload": {
+  "summary": "Website <username> is down on host Node_B", 
+  "source": "FireDuty",
+  "severity": "critical",
+  "custom_details": {
+    "website": "<username>",
+    "host": "Node_B",
+    "status": "down",
+    "error_message": "website out of memory"
+    }
+  }
 }
 
 
